@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --grid: rgba(148, 163, 184, 0.06);
+}
+
+* {
+  border-color: rgba(148, 163, 184, 0.12);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-900 text-mist-100 antialiased;
+  background-image:
+    radial-gradient(900px 480px at 12% -8%, rgba(56, 189, 248, 0.09), transparent 65%),
+    radial-gradient(760px 420px at 92% 4%, rgba(167, 139, 250, 0.07), transparent 62%),
+    linear-gradient(to bottom, #070b14, #05080f);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.28);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.22);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.36);
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-white/[0.06] bg-ink-850/80 backdrop-blur-sm;
+  }
+  .panel-hover {
+    @apply transition-colors hover:border-white/[0.11] hover:bg-ink-800/70;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium transition
+      disabled:cursor-not-allowed disabled:opacity-45;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-ink-950 hover:bg-accent-soft;
+  }
+  .btn-ghost {
+    @apply btn border border-white/10 bg-white/[0.02] text-mist-200 hover:bg-white/[0.06];
+  }
+  .btn-danger {
+    @apply btn border border-bad/30 bg-bad/10 text-bad hover:bg-bad/20;
+  }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-ink-900/80 px-3.5 py-2.5 text-sm text-mist-100
+      placeholder:text-mist-500 focus:border-accent/60 focus:outline-none focus:ring-2 focus:ring-accent/15;
+  }
+  .label {
+    @apply mb-1.5 block text-[11px] font-medium uppercase tracking-[0.14em] text-mist-500;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-white/10 px-2.5 py-0.5 text-[11px] font-medium;
+  }
+  .nav-item {
+    @apply flex items-center gap-2.5 rounded-xl px-3 py-2 text-[13px] font-medium text-mist-400
+      transition-colors hover:bg-white/[0.05] hover:text-mist-100;
+  }
+  .nav-item-active {
+    @apply bg-accent/10 text-accent-soft shadow-[inset_0_0_0_1px_rgba(56,189,248,0.18)];
+  }
+  .stat-value {
+    @apply text-2xl font-semibold tracking-tight text-mist-100;
+  }
+  .code {
+    @apply rounded-md bg-ink-950/70 px-1.5 py-0.5 font-mono text-[11px] text-mist-300;
+  }
+  .skeleton {
+    @apply animate-pulse rounded-lg bg-white/[0.05];
+  }
+}
+
+.grid-lines {
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 25%, transparent 78%);
+}
+
+.prose-nova {
+  @apply text-sm leading-relaxed text-mist-200;
+}
+.prose-nova h1,
+.prose-nova h2,
+.prose-nova h3 {
+  @apply mt-5 mb-2 font-semibold text-mist-100;
+}
+.prose-nova h1 {
+  @apply text-lg;
+}
+.prose-nova h2 {
+  @apply text-base;
+}
+.prose-nova h3 {
+  @apply text-sm;
+}
+.prose-nova p {
+  @apply my-2;
+}
+.prose-nova ul {
+  @apply my-2 list-disc space-y-1 pl-5;
+}
+.prose-nova ol {
+  @apply my-2 list-decimal space-y-1 pl-5;
+}
+.prose-nova a {
+  @apply text-accent-soft underline decoration-accent/30 underline-offset-2;
+}
+.prose-nova code {
+  @apply code;
+}
+.prose-nova strong {
+  @apply font-semibold text-mist-100;
+}

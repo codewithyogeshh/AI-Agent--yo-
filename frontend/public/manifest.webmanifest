@@ -1,0 +1,23 @@
+{
+  "name": "NOVA — Personal AI Operator",
+  "short_name": "NOVA",
+  "description": "Your autonomous AI operator: tasks, research, content production and publishing.",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#070B14",
+  "theme_color": "#070B14",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "New task", "url": "/chat" },
+    { "name": "Tasks", "url": "/tasks" },
+    { "name": "Approvals", "url": "/tasks?status=waiting_approval" }
+  ]
+}

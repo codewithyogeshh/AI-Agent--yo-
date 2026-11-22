@@ -1,0 +1,36 @@
+# secrets
+.env
+.env.*
+!.env.example
+backend/.env
+
+# python
+backend/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# node
+node_modules/
+.next/
+out/
+android/
+next-env.d.ts
+
+# runtime data
+backend/data/
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# media output
+backend/data/workspace/
+
+# logs
+logs/
+
+# editor / OS
+.DS_Store
+.vscode/
+.idea/
