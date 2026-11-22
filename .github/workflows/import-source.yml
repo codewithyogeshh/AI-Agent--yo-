@@ -1,0 +1,36 @@
+name: Import source
+
+on:
+  workflow_dispatch:
+    inputs:
+      archive_url:
+        description: Public ZIP URL to import
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch archive
+        run: |
+          curl -fsSL -o /tmp/app.zip "${{ inputs.archive_url }}"
+          rm -rf /tmp/src && mkdir -p /tmp/src
+          unzip -q /tmp/app.zip -d /tmp/src
+      - name: Sync into repository
+        run: |
+          set -euo pipefail
+          root=$(find /tmp/src -mindepth 1 -maxdepth 1 -type d | head -1)
+          rsync -a --delete \
+            --exclude '.git' \
+            --exclude '.github/workflows/import-source.yml' \
+            "$root"/ "$GITHUB_WORKSPACE"/
+          cd "$GITHUB_WORKSPACE"
+          git config user.name "nova-import"
+          git config user.email "nova-import@users.noreply.github.com"
+          git add -A
+          git commit -m "Import NOVA application source" || echo "No changes"
+          git push
